@@ -5,22 +5,21 @@ spring:
     admin:
       context-path: /admin
 server:
-  port: 8070
+  port: 8070    # sets the listening port for the EUREKA server
 eureka:
   instance:
-    hostname: eurekaserver
+    hostname: eureka-server      # sets the Eureka instance hostname
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    registerWithEureka: false       # tells the Config server to not register with the Eureka service
+    fetchRegistry: false        # and not cache the registry information locally
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/        # provide the service URL
   server:
-    waitTimeInMsWhenSyncEmpty: 5
-      
-      
+    waitTimeInMsWhenSyncEmpty: 5        # sets the initial time to wait before the server takes requests
+
+
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-   
